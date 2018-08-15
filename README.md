@@ -1,6 +1,6 @@
 # osha
 
-> find unsafe usages of bpm
+> find usages of `unsafe` in bpm
 
 ## usage
 
