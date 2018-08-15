@@ -4,14 +4,13 @@ import (
 	"context"
 	"fmt"
 	"log"
-	"strings"
 
 	"github.com/fatih/color"
 	"github.com/google/go-github/github"
 	"github.com/xoebus/shutdown"
 )
 
-const query = "org:cloudfoundry org:pivotal-cf-experimental org:pivotal-cf org:cloudfoundry-incubator unsafe extension:yml extension:erb path:jobs NOT rejoin"
+const query = "org:cloudfoundry org:pivotal-cf-experimental org:pivotal-cf org:cloudfoundry-incubator filename:bpm.yml unsafe"
 
 var bold = color.New(color.Bold)
 
@@ -24,10 +23,6 @@ func main() {
 		log.Fatal(err)
 	}
 	for i, result := range res.CodeResults {
-		// Simple heuristic for false positives.
-		if !strings.HasPrefix(result.GetName(), "bpm") {
-			continue
-		}
 		display(i, result)
 	}
 }
