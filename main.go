@@ -22,6 +22,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	// BUG(cb): pagination is not handled
 	for i, result := range res.CodeResults {
 		display(i+1, result)
 	}
