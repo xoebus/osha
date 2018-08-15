@@ -23,7 +23,7 @@ func main() {
 		log.Fatal(err)
 	}
 	for i, result := range res.CodeResults {
-		display(i, result)
+		display(i+1, result)
 	}
 }
 
