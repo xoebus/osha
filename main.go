@@ -8,11 +8,22 @@ import (
 	"github.com/fatih/color"
 	"github.com/google/go-github/github"
 	"github.com/xoebus/shutdown"
+
+	"github.com/xoebus/osha/querybuild"
 )
 
-const query = "org:cloudfoundry org:pivotal-cf-experimental org:pivotal-cf org:cloudfoundry-incubator filename:bpm.yml unsafe"
+var (
+	query = querybuild.Build(
+		querybuild.Org("cloudfoundry"),
+		querybuild.Org("cloudfoundry-incubator"),
+		querybuild.Org("pivotal-cf"),
+		querybuild.Org("pivotal-cf-experimental"),
+		querybuild.Filename("bpm.yml"),
+		querybuild.Query("unsafe"),
+	)
 
-var bold = color.New(color.Bold)
+	bold = color.New(color.Bold)
+)
 
 func main() {
 	ctx := shutdown.WithShutdown(context.Background())
